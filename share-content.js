@@ -1,13 +1,15 @@
+//var speedInput = document.getElementById('speed');
 var speed;
-var selectedStyle = "solid 3px #6f9ead";
-//total number of listings in closet - for stopping share loop at the end
-//of the closet, if selected
+var selectedStyle = "0px 0px 5px 5px #ad03fc";
 var shareWIth = '';
 var continuous = false;
 var active = false;
+var isLooping = false;
+//total number of listings in closet - for stopping share loop at the end
+//of the closet, if selected
 var totalListings = document.querySelector('.count').textContent;
-totalListings=totalListings.replace(/\,/g,'');
-totalListings=parseInt(totalListings,10);
+totalListings = totalListings.replace(/\,/g,'');
+totalListings = parseInt(totalListings,10);
 
 //object for storing values of checkbox inputs from form - share to, speed
 let shareValues = {shareWith: "", continuous: false, y: false};
@@ -30,7 +32,6 @@ function writeValues() {
 // function setting values, and for checking if share loop is currently 
 //running or not
 function changeStuff(a) {
-
     active = a;
     writeValues();
     shareLoop();
@@ -41,6 +42,16 @@ async function displayWarn() {
     setTimeout(function() {
         document.getElementById("warningEl").style.display = "none";
     }, 7000);
+}    
+
+//function to ensure that the number stored in "totalListings" is indeed
+//the number of items in the closet
+function listingsConfirm() {
+    if (document.querySelector('.count').classList.contains('has-likes')
+    || document.querySelector('.count').parentNode.classList.contains('refresh-text')) {
+        totalListings = 20000;
+    }
+
 }
 
 //kkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkk
@@ -53,6 +64,8 @@ async function displayWarn() {
 //loop for sharing through items in closet
 //values are passed from the HTML file through the valuePairs object
 async function shareLoop () {
+
+    isLooping = true;
 
     const sleep = (milliseconds) => {
       return new Promise(resolve => setInterval(resolve, milliseconds))
@@ -73,12 +86,14 @@ async function shareLoop () {
             }
 
             var totalEls = currentEl.length;
+
+            listingsConfirm();
         
             //funtion that is called after the "share" button is clicked, which
             //reads the value of the user's input for where to share the items,
             //and chooses the correct link in the popup window.  Also checks to
             //see if party is currently happening or not
-            async function sharePopupFunction() {
+            function sharePopupFunction() {
                 //checks to see which link to hit in popup after firing 'share' link
                 //if 'shareWith = followers', share to 'followers'
                 if (shareWith == 'followers') {
@@ -97,24 +112,22 @@ async function shareLoop () {
                         displayWarn();
                         document.getElementsByClassName('close')[2].click();
                     }
-                
-                //throw error to console if neither link is selected
                 }
-
             }
 
             async function statusChecker() {
 
-                //sets delay speed to normal
-                speed = 5000;
+                //sets delay speed to input
+                speed = 4000;
 
                 //just for kicks, and to make it obvious which one is selected
                 if (currentEl[i]) {
-                    currentEl[i].style.border = selectedStyle
+                    currentEl[i].style.boxShadow = selectedStyle
                 } else {
                     endCycle = true;
+                    isLooping = false;
                     active = false;
-                    clickFunc();
+                    btnDisplay(active);
                     return false; 
                 }
 
@@ -128,8 +141,7 @@ async function shareLoop () {
                     //delay for slowing down the process until a promise can be
                     //implimented to confirm the 'share' element was clicked
                     //after waiting, fire sharePopupFunction() to select where to share
-                    await sleep(800);
-                    sharePopupFunction();
+                    await sleep(800).then(sharePopupFunction());
                 } else {
                     //slows delay speed to skip through faster
                     speed = 300;
@@ -150,18 +162,22 @@ async function shareLoop () {
             }
 
             i++;
-            await sleep(speed); 
-            if (endCycle !== true) {
-                currentEl[i - 1].style.border = "none";
-            } else if (endCycle === true && active !== false) {
-                currentEl[i - 1].style.border = "none";
+            await sleep(speed);
+            
+            if (endCycle === false) {
+                currentEl[i - 1].style.boxShadow = "none";
+            } else if (endCycle === true && active === true) {
+                currentEl[i - 1].style.boxShadow = "none";
                 active = false;
-                clickFunc();
+                running = false;
+                btnDisplay(active)
             }
+        //indicator that the loop is no longer running, and it's safe to 
+        //start a new iteration    
+        isLooping = false;
         }
     //^this marks the end of the "while" loop
     }
-
   //initiates share loop
   doSomething();
 }

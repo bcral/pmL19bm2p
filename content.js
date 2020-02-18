@@ -1,3 +1,6 @@
+// kkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkk
+// kkkkkkkkkkkkkkkkkkkk Parent element for all HTML kkkkkkkkkkkkkkkkkkkk
+
 function includeWrap() {
 
     //main wrapper element that is included to the site's DOM
@@ -107,7 +110,7 @@ function includeForm() {
     
     //parent element that this element will be inserted into
     document.getElementById("mainFormEl").appendChild(formContainerEl);
-    
+
     // Start code for "share with" form elements
     // kkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkk
     
@@ -266,10 +269,10 @@ function includeShare() {
     //button element for executing "share" code
     var shareEl = document.createElement("button");
     shareEl.id = "shareEl";
-    shareEl.className = "primary-color";
-    shareEl.addEventListener("click", clickFunc)
+    shareEl.className = "primary-color btn";
+    shareEl.addEventListener("click", functionSorter)
     shareEl.innerHTML = "SHARE";
-    
+
     //parent element that this element will be inserted into
     document.getElementById("shareBtnWrapEl").appendChild(shareEl);
     
@@ -288,9 +291,8 @@ async function buildApp() {
     }
 
 onload = buildApp();
-onload = hideApp();
     
-    var displayed = false;
+    var displayed = true;
     
     var running = false;
     
@@ -322,10 +324,8 @@ onload = hideApp();
     // kkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkk
     // kkkkkkkkkkkkkkkkkkkkkkkkk Share button code kkkkkkkkkkkkkkkkkkkkkkkkk
     
-    function clickFunc() {
-        running = !running;
-        changeStuff(running);
-        if (running === true) {
+    function btnDisplay(a) {
+        if (a === true) {
             shareEl.className = "warning-color";
             shareEl.innerHTML = "STOP";
         } else {
@@ -333,3 +333,26 @@ onload = hideApp();
             shareEl.innerHTML = "SHARE";
         }
     }
+
+    function shareFunc() {
+        if (isLooping === false) {
+            running = true;
+            changeStuff(running);
+            btnDisplay(running);
+        } else {
+            stopFunc();
+        }
+    }
+    function stopFunc() {
+        running = false;
+        changeStuff(running);
+        btnDisplay(running);
+    }
+
+function functionSorter() {
+    if (running === false) {
+        shareFunc();
+    } else {
+        stopFunc();
+    }
+}

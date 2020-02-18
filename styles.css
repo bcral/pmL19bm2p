@@ -58,12 +58,6 @@ border: solid 1px;
 width: 100%;
 }
 
-.share-btn {
-text-align: center;
-position: relative;
-bottom: 0px;
-}
-
 .list-el {
   padding: 0.4em;
   margin-bottom: 0px;
@@ -86,7 +80,7 @@ bottom: 0px;
   display: block;
   bottom: 10px;
   left: 6px;
-  max-height: 400px;
+  max-height: 500px;
   width: 185px;
   margin: auto;
   padding: 0;
@@ -95,6 +89,9 @@ bottom: 0px;
 
 #shareEl {
   border-right: solid 1px #f0f0f0;
+  width: 100%;
+  padding: 0.5em;
+  border: solid 1px #cccccc;
 }
 
 #optionsEl {
@@ -145,7 +142,6 @@ bottom: 0px;
 }
 
 #backgroundEl {
-  max-height: 300px;
   background-color: #f0f0f0;
   border: solid 1px #000;
 }
@@ -160,10 +156,10 @@ bottom: 0px;
   margin: 0.5em;
 }
 
-#shareEl {
-  width: 100%;
-  padding: 0.5em;
-  border: solid 1px #cccccc;
+#speedValueEl {
+  text-align: center;
+  width: 25px;
+  text-decoration: none;
 }
 
 #shareEl:hover {
@@ -174,3 +170,8 @@ bottom: 0px;
 #formShareRowEl {
   border-bottom: solid 1px #6f9ead;
 }
+
+#formSpeedRowEl {
+  border-bottom: solid 1px #6f9ead;
+}
+
