@@ -160,7 +160,7 @@ function includeForm() {
     //element for input of the "share with" radio button for followers
     var shareFollowersInputEl = document.createElement("input");
     shareFollowersInputEl.id = "followers";
-    shareFollowersInputEl.setAttribute("name", "location");
+    shareFollowersInputEl.setAttribute("name", "shareLoc");
     shareFollowersInputEl.setAttribute("type", "radio");
     shareFollowersInputEl.setAttribute("value", "followers");
     shareFollowersInputEl.checked = true;
@@ -182,6 +182,7 @@ function includeForm() {
     var sharePartyInputEl = document.createElement("input");
     sharePartyInputEl.id = "party";
     sharePartyInputEl.className = "location";
+    sharePartyInputEl.setAttribute("name", "shareLoc");
     sharePartyInputEl.setAttribute("type", "radio");
     sharePartyInputEl.setAttribute("value", "party");
     

@@ -1,6 +1,6 @@
 //var speedInput = document.getElementById('speed');
 var speed;
-var selectedStyle = "0px 0px 5px 5px #ad03fc";
+var selectedStyle = "0px 0px 5px 5px #5dafb2";
 var shareWIth = '';
 var continuous = false;
 var active = false;
@@ -81,8 +81,32 @@ async function shareLoop () {
     async function doSomething() {
         while (active === true) {
 
-            if (document.getElementById("captcha-form")) {
-                endCycle = true;
+            var captchaEl = document.getElementById("captcha-popup");
+
+            //stop share loop if captcha appears
+            if (captchaEl) {
+                if (captchaEl.style.display == 'block') {
+                    endCycle = true;
+
+                    var isCaptcha = false;
+                    
+                    const testCaptcha = async () => {
+                    
+                        isCaptcha = true;
+
+                        while (isCaptcha) {
+                            await sleep(3000);
+                            if (captchaEl.style.display == 'none') {
+                                isCaptcha = false;
+                                break;
+                            }
+                        }
+                    }
+                    const captchaContinue = () => {
+                        endCycle = false;
+                    }
+                    await testCaptcha().then(captchaContinue);
+                }
             }
 
             var totalEls = currentEl.length;
@@ -118,7 +142,7 @@ async function shareLoop () {
             async function statusChecker() {
 
                 //sets delay speed to input
-                speed = 4000;
+                speed = 800;
 
                 //just for kicks, and to make it obvious which one is selected
                 if (currentEl[i]) {
