@@ -5,8 +5,8 @@ function includeWrap() {
 
     //main wrapper element that is included to the site's DOM
     var thing = document.createElement("div");
-    thing.setAttribute("id", "wrapDiv");
-    thing.setAttribute("class", "container");
+    thing.id = "wrapDiv";
+    thing.className = "container";
     
     //adding the main wrapper element to the DOM - this contains all following
     //HTML elements that are created
@@ -30,6 +30,15 @@ function includeStyles() {
 // kkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkk
 
 function includeWarning() {
+
+    //main wrapper element that is included to the site's DOM
+    var warningWrapEl = document.createElement("div");
+    warningWrapEl.id = "warningDiv";
+    warningWrapEl.className = "container";
+    
+    //adding the main wrapper element to the DOM - this contains all following
+    //HTML elements that are created
+    document.getElementById('wrapDiv').appendChild(warningWrapEl);
 
     //div element for warning header
     var warningEl = document.createElement("div");
@@ -117,13 +126,14 @@ function includeForm() {
     //element for the row for the "share" form elements
     var formShareRowEl = document.createElement("div");
     formShareRowEl.id = "formShareRowEl";
+    formShareRowEl.className = "borderBottom";
     
     //parent element that this element will be inserted into
     document.getElementById("formContainerEl").appendChild(formShareRowEl);
     
     //element containing the column and form-group for the "share to" elements
     var formShareToContainerEl = document.createElement("div");
-    formShareToContainerEl.setAttribute("class", "list-el");
+    formShareToContainerEl.className = "list-el";
     formShareToContainerEl.id = "formShareToContainerEl";
     
     //parent element that this element will be inserted into
@@ -171,7 +181,7 @@ function includeForm() {
     //element for input of the "share with" radio button for party
     var sharePartyInputEl = document.createElement("input");
     sharePartyInputEl.id = "party";
-    sharePartyInputEl.setAttribute("name", "location");
+    sharePartyInputEl.className = "location";
     sharePartyInputEl.setAttribute("type", "radio");
     sharePartyInputEl.setAttribute("value", "party");
     
@@ -193,7 +203,7 @@ function includeForm() {
     
     //element containing the column and form-group for the "continuous" elements
     var formContContainerEl = document.createElement("div");
-    formContContainerEl.setAttribute("class", "list-el");
+    formContContainerEl.className = "list-el";
     formContContainerEl.id = "formContContainerEl";
     
     //parent element that this element will be inserted into
@@ -245,7 +255,7 @@ function includeForm() {
     // kkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkk
     // End of code for creating and inserting "continuous" elements  
 
-    // Start code for creating and inserting "share" button elements
+        // Start code for creating and inserting "share" button elements
     // kkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkk
     
 function includeShare() {
@@ -253,18 +263,10 @@ function includeShare() {
     //element for containing "share" button
     var shareBtnContainerEl = document.createElement("div");
     shareBtnContainerEl.id = "shareBtnContainerEl";
-    shareBtnContainerEl.classList = "primary-color main-nav";
+    shareBtnContainerEl.classList = "main-nav";
     
     //parent element that this element will be inserted into
     document.getElementById("backgroundEl").appendChild(shareBtnContainerEl);
-    
-    //other element for containing "share" button
-    var shareBtnWrapEl = document.createElement("div");
-    shareBtnWrapEl.id = "shareBtnWrapEl";
-    shareBtnWrapEl.classList = "main-btn primary-color";
-    
-    //parent element that this element will be inserted into
-    document.getElementById("shareBtnContainerEl").appendChild(shareBtnWrapEl);
     
     //button element for executing "share" code
     var shareEl = document.createElement("button");
@@ -274,7 +276,7 @@ function includeShare() {
     shareEl.innerHTML = "SHARE";
 
     //parent element that this element will be inserted into
-    document.getElementById("shareBtnWrapEl").appendChild(shareEl);
+    document.getElementById("shareBtnContainerEl").appendChild(shareEl);
     
 }
     

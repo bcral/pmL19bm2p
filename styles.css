@@ -29,13 +29,17 @@ a {
 }
 
 .primary-color {
-  background: #6f9ead;
+  background: #5dafb2;
   color: #f0f0f0;
 }
 
 .warning-color {
   background-color: #c99f9c;
   color: #ffffff;
+}
+
+.borderBottom {
+  border-bottom: solid 1px #5dafb2;
 }
 
 .navbar {
@@ -87,13 +91,6 @@ width: 100%;
   box-shadow: -5px -5px 3px rgba(0, 0, 0, 0.3);
 }
 
-#shareEl {
-  border-right: solid 1px #f0f0f0;
-  width: 100%;
-  padding: 0.5em;
-  border: solid 1px #cccccc;
-}
-
 #optionsEl {
   border-left: solid 1px #f0f0f0;
 }
@@ -108,13 +105,13 @@ width: 100%;
   cursor: pointer;
   font-weight: 700;
   line-height: 70%;
-  border: solid 1px #86bccc;
+  border: solid 1px #f0f0f0;
   font-style: bold;
 }
 
 #logout:hover {
   color: #cccccc;
-  background-color: #6f9ead;
+  background-color: #5dafb2;
   font-style: bold;
   cursor: pointer;
   text-decoration: none;
@@ -122,18 +119,6 @@ width: 100%;
   border-right: solid 1px #86bccc;
   border-top: solid 1px #427f94;
   border-left: solid 1px #427f94;
-}
-
-#headLiteTagEl {
-  font-family: Brush Script MT, cursive;
-  margin: 0px;
-  padding: 0px;
-  font-size: 20px;
-  transform: rotate(-20deg);
-  color: #f0f0f0;
-  height: 20px;
-  position: relative;
-  top: 12px;
 }
 
 #appIcon {
@@ -156,22 +141,14 @@ width: 100%;
   margin: 0.5em;
 }
 
-#speedValueEl {
-  text-align: center;
-  width: 25px;
-  text-decoration: none;
+#shareEl {
+  border-right: solid 1px #f0f0f0;
+  width: 100%;
+  padding: 0.5em;
+  border: solid 1px #cccccc;
 }
 
 #shareEl:hover {
   background-color: #cccccc;
   color: #000000;
 }
-
-#formShareRowEl {
-  border-bottom: solid 1px #6f9ead;
-}
-
-#formSpeedRowEl {
-  border-bottom: solid 1px #6f9ead;
-}
-
