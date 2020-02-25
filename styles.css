@@ -1,27 +1,45 @@
-label {
-  width: 100%;
+#formContainerEl input[type=radio] {
+  display: none;
 }
 
-label, input {
-  padding: 0.4em;
-  margin-bottom: 0px;
+#formContainerEl .radioBtn {
+  display: block;
+  width: 100%;
+  letter-spacing: 2px;
+  font-size: 12px;
+  font-weight: 400;
+  cursor: pointer;
+  border-radius: 1em;
+  margin: 0.5em 0em 0.5em 0em;
+  border: solid 1px #636262;
+  color: #636262;
+  box-shadow: -1px 1px 1px rgba(0, 0, 0, 0.8);
+  padding: 0.1em;
+}
+
+#formContainerEl input[type="radio"]:checked+label {
+  border: solid 3px #5dafb2;
+  box-shadow: none;
+  color: #000000;
+  background-color: #ffffff;
+  box-shadow: -1px 1px 1px rgba(0, 0, 0, 0.8);
 }
 
 h2 {
-  padding: 0.6em;
+  padding: 1em 0.5em;
   margin: 0px;
+  letter-spacing: 3px;
+  font-size: 18px;
+  font-weight: 300;
 }
 
 h5 {
   margin-top: 0px;
   width: 100%;
   font-size: 12px;
+  letter-spacing: 3px;
+  font-weight: 300;
   color: #636262;
-  text-decoration: underline;
-}
-
-input[type=checkbox], input[type=radio] {
-  margin-left: 1em;
 }
 
 a {
@@ -30,7 +48,7 @@ a {
 
 .primary-color {
   background: #5dafb2;
-  color: #f0f0f0;
+  color: #ffffff;
 }
 
 .warning-color {
@@ -38,8 +56,13 @@ a {
   color: #ffffff;
 }
 
-.borderBottom {
-  border-bottom: solid 1px #5dafb2;
+.borderBottom:after {
+  content: "";
+  display: block;
+  margin: 0 auto;
+  width: 80%;
+  padding-top: 3px;
+  border-bottom: solid 1px #000000;
 }
 
 .navbar {
@@ -63,18 +86,14 @@ width: 100%;
 }
 
 .list-el {
-  padding: 0.4em;
   margin-bottom: 0px;
+  padding: 0.2em 1.5em 0.2em 1.5em;
 }
 
 .active {
   background-color: #f0f0f0;
   color: #000000;
   border-bottom: none;
-}
-
-.radioBtn {
-  display: block;
 }
 
 #wrapDiv {
@@ -88,7 +107,8 @@ width: 100%;
   width: 185px;
   margin: auto;
   padding: 0;
-  box-shadow: -5px -5px 3px rgba(0, 0, 0, 0.3);
+  box-shadow: -3px 3px 5px rgba(0, 0, 0, 0.3);
+  font-family: Verdana, Geneva, sans-serif;
 }
 
 #optionsEl {
@@ -101,12 +121,13 @@ width: 100%;
   padding: 0.2em;
   margin: 0.2em;
   font-size: 20px;
-  color: #f0f0f0;
+  color: #ffffff;
   cursor: pointer;
   font-weight: 700;
   line-height: 70%;
-  border: solid 1px #f0f0f0;
+  border: solid 1px #ffffff;
   font-style: bold;
+  box-shadow: -1px 1px 1px rgba(0, 0, 0, 0.8);
 }
 
 #logout:hover {
@@ -116,9 +137,9 @@ width: 100%;
   cursor: pointer;
   text-decoration: none;
   border-bottom: solid 1px #86bccc;
-  border-right: solid 1px #86bccc;
+  border-left: solid 1px #86bccc;
   border-top: solid 1px #427f94;
-  border-left: solid 1px #427f94;
+  border-right: solid 1px #427f94;
 }
 
 #appIcon {
@@ -138,14 +159,18 @@ width: 100%;
 }
 
 #shareBtnContainerEl {
-  margin: 0.5em;
+  margin: 0.7em 1em 1em 1em;
 }
 
 #shareEl {
-  border-right: solid 1px #f0f0f0;
   width: 100%;
   padding: 0.5em;
-  border: solid 1px #cccccc;
+  border-radius: 1em;
+  letter-spacing: 3px;
+  font-size: 18px;
+  font-weight: 500;
+  box-shadow: -1px 1px 1px rgba(0, 0, 0, 0.8);
+  border: none;
 }
 
 #shareEl:hover {

@@ -29,7 +29,29 @@ function writeValues() {
     }
 }
 
-// function setting values, and for checking if share loop is currently 
+//sorts and sets values for what to do with the popup page after "share"
+function sharePopupFunction() {
+    //if 'shareWith = followers', share to 'followers'
+    if (shareWith == 'followers') {
+        document.getElementsByClassName('share-wrapper-con')[0].click();
+    //if 'shareWith = party', share to 'party'
+    } else if (shareWith == 'party') {
+
+        //check if a party is happening
+        if (document.getElementsByClassName('share-wrapper-con')[1]) {
+            //if so, click link to share there
+            document.getElementsByClassName('share-wrapper-con')[1].click();
+        //if not, show warning to tell user there isn't a party happening,
+        //end cycle, and exit loop
+        } else {
+            endCycle = true;
+            displayWarn();
+            document.getElementsByClassName('close')[2].click();
+        }
+    }
+}
+
+//function setting values, and for checking if share loop is currently 
 //running or not
 function changeStuff(a) {
     active = a;
@@ -37,6 +59,7 @@ function changeStuff(a) {
     shareLoop();
 }
 
+//function for displaying, and then re-hiding the "no party" message
 async function displayWarn() {
     document.getElementById("warningEl").style.display = "block";
     setTimeout(function() {
@@ -71,6 +94,7 @@ async function shareLoop () {
       return new Promise(resolve => setInterval(resolve, milliseconds))
     }
 
+    //main counter variable to mark the current iterration
     var i = 0;
 
     var currentEl = document.getElementsByClassName('tile');
@@ -83,7 +107,8 @@ async function shareLoop () {
 
             var captchaEl = document.getElementById("captcha-popup");
 
-            //stop share loop if captcha appears
+            //stop share loop if captcha appears, pause main share loop
+            //until captcha is cleared
             if (captchaEl) {
                 if (captchaEl.style.display == 'block') {
                     endCycle = true;
@@ -112,42 +137,17 @@ async function shareLoop () {
             var totalEls = currentEl.length;
 
             listingsConfirm();
-        
-            //funtion that is called after the "share" button is clicked, which
-            //reads the value of the user's input for where to share the items,
-            //and chooses the correct link in the popup window.  Also checks to
-            //see if party is currently happening or not
-            function sharePopupFunction() {
-                //checks to see which link to hit in popup after firing 'share' link
-                //if 'shareWith = followers', share to 'followers'
-                if (shareWith == 'followers') {
-                    document.getElementsByClassName('share-wrapper-con')[0].click();
-                //if 'shareWith = party', share to 'party'
-                } else if (shareWith == 'party') {
-
-                    //check if a party is happening
-                    if (document.getElementsByClassName('share-wrapper-con')[1]) {
-                        //if so, click link to share there
-                        document.getElementsByClassName('share-wrapper-con')[1].click();
-                    //if not, show warning to tell user there isn't a party happening,
-                    //end cycle, and exit loop
-                    } else {
-                        endCycle = true;
-                        displayWarn();
-                        document.getElementsByClassName('close')[2].click();
-                    }
-                }
-            }
 
             async function statusChecker() {
 
                 //sets delay speed to input
-                speed = 800;
+                speed = 4000;
 
                 //just for kicks, and to make it obvious which one is selected
                 if (currentEl[i]) {
                     currentEl[i].style.boxShadow = selectedStyle
                 } else {
+                    //if there is no element selected, end the cycle
                     endCycle = true;
                     isLooping = false;
                     active = false;
@@ -188,6 +188,7 @@ async function shareLoop () {
             i++;
             await sleep(speed);
             
+            //remove "selected" style from previous element
             if (endCycle === false) {
                 currentEl[i - 1].style.boxShadow = "none";
             } else if (endCycle === true && active === true) {

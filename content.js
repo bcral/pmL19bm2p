@@ -142,20 +142,10 @@ function includeForm() {
     //h5 element containing the header text for "share with"
     var shareWithTitleEl = document.createElement("h5");
     shareWithTitleEl.className = "list-el";
-    shareWithTitleEl.innerHTML = "Share With:";
+    shareWithTitleEl.innerHTML = "Share To:";
     
     //parent element that this element will be inserted into
     document.getElementById("formShareToContainerEl").appendChild(shareWithTitleEl);
-    
-    //element for label(and parent) of the "share to - followers" input radio button
-    var shareWithLabelEl = document.createElement("label");
-    shareWithLabelEl.setAttribute("for", "followers");
-    shareWithLabelEl.id = "shareWithLabelEl";
-    shareWithLabelEl.className = "radioBtn";
-    shareWithLabelEl.innerHTML = "Followers";
-    
-    //parent element that this element will be inserted into
-    document.getElementById("formShareToContainerEl").appendChild(shareWithLabelEl);
     
     //element for input of the "share with" radio button for followers
     var shareFollowersInputEl = document.createElement("input");
@@ -166,17 +156,17 @@ function includeForm() {
     shareFollowersInputEl.checked = true;
     
     //parent element that this element will be inserted into
-    document.getElementById("shareWithLabelEl").appendChild(shareFollowersInputEl);
-    
-    //element for label(and parent) of the "share to - party" input radio button
-    var shareWithPartyLabelEl = document.createElement("label");
-    shareWithPartyLabelEl.setAttribute("for", "party");
-    shareWithPartyLabelEl.id = "shareWithPartyLabelEl";
-    shareWithPartyLabelEl.className = "radioBtn";
-    shareWithPartyLabelEl.innerHTML = "Party";
+    document.getElementById("formShareToContainerEl").appendChild(shareFollowersInputEl);
+
+    //element for label(and parent) of the "share to - followers" input radio button
+    var shareWithLabelEl = document.createElement("label");
+    shareWithLabelEl.setAttribute("for", "followers");
+    shareWithLabelEl.id = "shareWithLabelEl";
+    shareWithLabelEl.className = "radioBtn";
+    shareWithLabelEl.innerHTML = "Followers";
     
     //parent element that this element will be inserted into
-    document.getElementById("formShareToContainerEl").appendChild(shareWithPartyLabelEl);
+    document.getElementById("formShareToContainerEl").appendChild(shareWithLabelEl);
     
     //element for input of the "share with" radio button for party
     var sharePartyInputEl = document.createElement("input");
@@ -187,7 +177,17 @@ function includeForm() {
     sharePartyInputEl.setAttribute("value", "party");
     
     //parent element that this element will be inserted into
-    document.getElementById("shareWithPartyLabelEl").appendChild(sharePartyInputEl);
+    document.getElementById("formShareToContainerEl").appendChild(sharePartyInputEl);
+
+    //element for label(and parent) of the "share to - party" input radio button
+    var shareWithPartyLabelEl = document.createElement("label");
+    shareWithPartyLabelEl.setAttribute("for", "party");
+    shareWithPartyLabelEl.id = "shareWithPartyLabelEl";
+    shareWithPartyLabelEl.className = "radioBtn";
+    shareWithPartyLabelEl.innerHTML = "Party";
+    
+    //parent element that this element will be inserted into
+    document.getElementById("formShareToContainerEl").appendChild(shareWithPartyLabelEl);
     
     // kkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkk
     // End of code for creating and inserting "share with" elements
@@ -198,6 +198,7 @@ function includeForm() {
     //element for the row for the "continuous" form elements
     var formContRowEl = document.createElement("div");
     formContRowEl.id = "formContRowEl";
+    formContRowEl.className = "borderBottom";
     
     //parent element that this element will be inserted into
     document.getElementById("formContainerEl").appendChild(formContRowEl);
@@ -210,16 +211,6 @@ function includeForm() {
     //parent element that this element will be inserted into
     document.getElementById("formContRowEl").appendChild(formContContainerEl);
     
-    //element for label(and parent) of the "one time" input radio button
-    var onceLabelEl = document.createElement("label");
-    onceLabelEl.setAttribute("for", "continuous");
-    onceLabelEl.id = "onceLabelEl";
-    onceLabelEl.className = "radioBtn";
-    onceLabelEl.innerHTML = "One Time";
-    
-    //parent element that this element will be inserted into
-    document.getElementById("formContContainerEl").appendChild(onceLabelEl);
-    
     //element for input of the "one time" radio button for followers
     var onceInputEl = document.createElement("input");
     onceInputEl.id = "onceInputEl";
@@ -229,17 +220,17 @@ function includeForm() {
     onceInputEl.checked = true;
     
     //parent element that this element will be inserted into
-    document.getElementById("onceLabelEl").appendChild(onceInputEl);
-    
-    //element for label(and parent) of the "continuous" input radio button
-    var contLabelEl = document.createElement("label");
-    contLabelEl.setAttribute("for", "continuous");
-    contLabelEl.id = "contLabelEl";
-    contLabelEl.className = "radioBtn";
-    contLabelEl.innerHTML = "Continuous";
+    document.getElementById("formContContainerEl").appendChild(onceInputEl);
+
+    //element for label(and parent) of the "one time" input radio button
+    var onceLabelEl = document.createElement("label");
+    onceLabelEl.setAttribute("for", "onceInputEl");
+    onceLabelEl.id = "onceLabelEl";
+    onceLabelEl.className = "radioBtn";
+    onceLabelEl.innerHTML = "One Time";
     
     //parent element that this element will be inserted into
-    document.getElementById("formContContainerEl").appendChild(contLabelEl);
+    document.getElementById("formContContainerEl").appendChild(onceLabelEl);
     
     //element for input of the "continuous" radio button for followers
     var contInputEl = document.createElement("input");
@@ -250,7 +241,17 @@ function includeForm() {
 
     
     //parent element that this element will be inserted into
-    document.getElementById("contLabelEl").appendChild(contInputEl);
+    document.getElementById("formContContainerEl").appendChild(contInputEl);
+
+    //element for label(and parent) of the "continuous" input radio button
+    var contLabelEl = document.createElement("label");
+    contLabelEl.setAttribute("for", "contInputEl");
+    contLabelEl.id = "contLabelEl";
+    contLabelEl.className = "radioBtn";
+    contLabelEl.innerHTML = "Continuous";
+    
+    //parent element that this element will be inserted into
+    document.getElementById("formContContainerEl").appendChild(contLabelEl);
 }
     
     // kkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkk
@@ -324,8 +325,8 @@ onload = buildApp();
         sendResponse = 'recieved'; }
     });
     
-    // kkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkk
-    // kkkkkkkkkkkkkkkkkkkkkkkkk Share button code kkkkkkkkkkkkkkkkkkkkkkkkk
+// kkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkk
+// kkkkkkkkkkkkkkkkkkkkkkkkk Share button code kkkkkkkkkkkkkkkkkkkkkkkkk
     
     function btnDisplay(a) {
         if (a === true) {
